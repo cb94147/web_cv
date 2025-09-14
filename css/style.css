@@ -1,10 +1,18 @@
+/* ---------------- Body ---------------- */
+/* ---------------- Body ---------------- */
 body {
   margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #b6b6b6;
+  /* soft neutral grey */
+  color: #202020;
+  min-height: 100vh;
 }
 
-/****************   Nav Section **********************/
+/* ---------------- Nav ---------------- */
 nav {
-  background-color: #fc3838;
+  background-color: #d14848;
+  /* red accent */
   border-bottom: 2px solid #000;
   font-size: larger;
   color: white;
@@ -16,15 +24,16 @@ nav a {
   text-decoration: none;
   color: white;
   padding: 20px;
+  transition: color 0.3s ease;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: #ff0000;
+  /* highlight for hover */
 }
-
 /***********************  Footer Section   **************************/
 footer {
-  background-color: #505050;
+  background-color: #303030;
   border-top: 2px solid #000;
   text-align: center;
   padding: 10px;
@@ -34,9 +43,14 @@ footer {
 }
 
 footer a {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
   padding: 0 5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+  color: #ff0000;
 }
 
 /*********** Splash Page ************************/
@@ -47,11 +61,10 @@ header {
 }
 
 header h1 {
-  font-family: 'Roboto', sans-serif;
   font-size: 2.5em;
   font-weight: 700;
   margin-bottom: 10px;
-  color: rgb(32, 32, 32);
+  color: #202020;
 }
 
 header img {
@@ -61,20 +74,13 @@ header img {
   margin-bottom: 10px;
 }
 
-.address {
-  display: flex;
-  justify-content: center;
-  margin-top: 0;
-  margin-bottom: 5px;
-  font-size: 1.1em;
-}
-
+.address,
 .tagline {
   text-align: center;
   font-size: 1.2em;
   font-weight: 500;
-  margin-top: 0;
-  margin-bottom: 20px;
+  margin: 0;
+  padding: 8px 0;
 }
 
 /************* Sections ********************/
@@ -86,9 +92,8 @@ hr {
 
 section h3 {
   text-align: center;
-  font-family: 'Roboto', sans-serif;
   font-size: 1.4em;
-  color: #2c3e50;
+  color: #202020;
   margin-bottom: 8px;
 }
 
@@ -117,12 +122,13 @@ section li {
 }
 
 section a {
-  color: #2980b9;
+  color: #fc3838; /* red for links */
   text-decoration: none;
 }
 
 section a:hover {
   text-decoration: underline;
+  color: #000;
 }
 
 /**************   Projects   *****************/
@@ -133,19 +139,70 @@ section a:hover {
   margin-bottom: 20px;
 }
 
+.card {
+  background-color: #e24747;
+    /* solid red */
+    color: #fff;
+    /* high contrast text */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Card hover effect */
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(247, 86, 86, 0.6);
+}
+
+/* Card headings */
+.card h2 {
+  color: #ffabab;
+  font-size: 1.5rem;
+  text-shadow: 0 0 4px rgba(8, 1, 1, 0.5);
+  position: relative;
+  z-index: 2;
+}
+
+/* Card images */
 .card img {
   width: 70%;
   border-radius: 10px;
   margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
 }
 
-.card {
-  background-color: #f8f8f8;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.2s;
+/* Subtle holographic overlay */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      rgba(255, 255, 255, 0.15),
+      rgba(252, 56, 56, 0.15),
+      rgba(255, 255, 255, 0.1));
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+/* Hover effects */
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(252, 56, 56, 0.5), 0 0 35px rgba(255, 153, 153, 0.3);
+}
+
+.card:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
 }
 
 /**************   Responsiveness   *****************/
@@ -171,9 +228,9 @@ section a:hover {
   flex-direction: column;
   gap: 15px;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #f0f0f0;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 input,
@@ -182,7 +239,6 @@ textarea {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-family: 'Roboto', sans-serif;
   font-size: 1em;
   box-sizing: border-box;
 }
@@ -194,24 +250,21 @@ textarea {
 .info {
   display: flex;
   justify-content: center;
-  margin-top: 0;
-  margin-bottom: 5px;
+  margin: 0 0 5px 0;
   font-size: 1.1em;
 }
 
 .name {
-  font-family: 'Roboto', sans-serif;
   font-size: 2.5em;
   font-weight: 700;
   margin-bottom: 10px;
-  color: rgb(32, 32, 32);
+  color: #202020;
   text-align: center;
 }
 
 .contact {
   text-align: center;
-  font-family: 'Roboto', sans-serif;
   font-size: 1.4em;
-  color: #2c3e50;
+  color: #202020;
   margin-bottom: 8px;
 }
